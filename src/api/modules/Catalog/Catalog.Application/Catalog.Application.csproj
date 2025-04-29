@@ -7,4 +7,7 @@
     <ProjectReference Include="..\..\..\framework\Core\Core.csproj" />
     <ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Recipes\Update\v1\" />
+  </ItemGroup>
 </Project>
