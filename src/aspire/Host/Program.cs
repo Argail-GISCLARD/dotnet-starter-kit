@@ -12,14 +12,20 @@ builder.AddContainer("prometheus", "prom/prometheus")
 var username = builder.AddParameter("pg-username", "admin");
 var password = builder.AddParameter("pg-password", "admin");
 
-var database = builder.AddPostgres("db", username, password, port: 5432)
+var database = builder.AddPostgres("db", username, password, port: 5433)
     .WithDataVolume()
     .AddDatabase("fullstackhero");
 
 var api = builder.AddProject<Projects.Server>("webapi")
     .WaitFor(database);
 
-var blazor = builder.AddProject<Projects.Client>("blazor");
+builder.AddNpmApp("react", "../../apps/blazor/react")
+    .WithReference(api)
+    .WaitFor(api)
+    .WithEnvironment("BROWSER", "none")
+    .WithHttpEndpoint(env: "PORT")
+    .WithExternalHttpEndpoints()
+    .PublishAsDockerFile();
 
 using var app = builder.Build();
 
