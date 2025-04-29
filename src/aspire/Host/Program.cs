@@ -19,7 +19,7 @@ var database = builder.AddPostgres("db", username, password, port: 5433)
 var api = builder.AddProject<Projects.Server>("webapi")
     .WaitFor(database);
 
-builder.AddNpmApp("react", "../../apps/blazor/react")
+builder.AddNpmApp("react", "../../apps/blazor/react","dev")
     .WithReference(api)
     .WaitFor(api)
     .WithEnvironment("BROWSER", "none")

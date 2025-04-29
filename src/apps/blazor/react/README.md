@@ -1,54 +1,90 @@
-# React + TypeScript + Vite
+## [Devias Kit - React](https://material-kit-react.devias.io/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
-Currently, two official plugins are available:
+[![Devias Kit - React](https://github.com/devias-io/material-kit-react/blob/main/public/assets/thumbnail.png)](https://material-kit-react.devias.io/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Free React Admin Dashboard made with [MUI's](https://mui.com) components, [React](https://reactjs.org) and of course [Next.js](https://github.com/vercel/next.js) to boost your app development process!
 
-## Expanding the ESLint configuration
+## Pages 
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Dashboard](https://material-kit-react.devias.io)
+- [Customers](https://material-kit-react.devias.io/dashboard/customers)
+- [Integrations](https://material-kit-react.devias.io/dashboard/integrations)
+- [Settings](https://material-kit-react.devias.io/dashboard/settings)
+- [Account](https://material-kit-react.devias.io/dashboard/account)
+- [Sign In](https://material-kit-react.devias.io/auth/sign-in)
+- [Sign Up](https://material-kit-react.devias.io/auth/sign-up)
+- [Reset Password](https://material-kit-react.devias.io/auth/reset-password)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Free Figma Community File
+
+- [Duplicate File](https://www.figma.com/file/b3L1Np4RYiicZAOMopHNkm/Devias-Dashboard-Design-Library-Kit)
+
+## Upgrade to PRO Version
+
+We also have a pro version of this product which bundles even more pages and components if you want
+to save more time and design efforts :)
+
+| Free Version (this one)  | [Devias Kit Pro](https://mui.com/store/items/devias-kit-pro/)                |
+| ------------------------ | :--------------------------------------------------------------------------- |
+| **8** Pages              | **80+** Pages                                                                |
+| ✔ Custom Authentication  | ✔ Authentication with **Amplify**, **Auth0**, **Firebase** and **Supabase**  |
+| -                        | ✔ Vite Version                                                               |
+| -                        | ✔ Dark Mode Support                                                          |
+| -                        | ✔ Complete Users Flows                                                       |
+| -                        | ✔ Premium Technical Support                                                  |
+
+## Quick start
+
+- Clone the repo: `git clone https://github.com/devias-io/material-kit-react.git`
+- Make sure your Node.js and npm versions are up to date
+- Install dependencies: `npm install` or `yarn`
+- Start the server: `npm run dev` or `yarn dev`
+- Open browser: `http://localhost:3000`
+
+## File Structure
+
+Within the download you'll find the following directories and files:
+
+```
+┌── .editorconfig
+├── .eslintrc.js
+├── .gitignore
+├── CHANGELOG.md
+├── LICENSE.md
+├── next-env.d.ts
+├── next.config.js
+├── package.json
+├── README.md
+├── tsconfig.json
+├── public
+└── src
+	├── components
+	├── contexts
+	├── hooks
+	├── lib
+	├── styles
+	├── types
+	└── app
+		├── layout.tsx
+		├── page.tsx
+		├── auth
+		└── dashboard
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Resources
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- More freebies like this one: https://devias.io
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Reporting Issues:
+
+- [Github Issues Page](https://github.com/devias-io/material-kit-react/issues)
+
+## License
+
+- Licensed under [MIT](https://github.com/devias-io/material-kit-react/blob/main/LICENSE.md)
+
+## Contact Us
+
+- Email Us: support@deviasio.zendesk.com
