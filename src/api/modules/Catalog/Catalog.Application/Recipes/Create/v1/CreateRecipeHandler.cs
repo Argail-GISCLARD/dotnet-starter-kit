@@ -13,7 +13,7 @@ public sealed class CreateRecipeHandler(
     public async Task<CreateRecipeResponse> Handle(CreateRecipeCommand request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
-        var recipe = Recipe.Create(request.Name!, request.Version, request.Content, request.Changelog);
+        var recipe = Recipe.Create(request.Name!);
         await repository.AddAsync(recipe, cancellationToken);
         logger.LogInformation("recipe created {RecipeId}", recipe.Id);
         return new CreateRecipeResponse(recipe.Id);

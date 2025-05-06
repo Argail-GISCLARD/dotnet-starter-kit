@@ -44,14 +44,6 @@ public static class FshPermissions
         new("Delete Brands", FshActions.Delete, FshResources.Brands),
         new("Export Brands", FshActions.Export, FshResources.Brands),
 
-        //todos
-        new("View Todos", FshActions.View, FshResources.Todos, IsBasic: true),
-        new("Search Todos", FshActions.Search, FshResources.Todos, IsBasic: true),
-        new("Create Todos", FshActions.Create, FshResources.Todos),
-        new("Update Todos", FshActions.Update, FshResources.Todos),
-        new("Delete Todos", FshActions.Delete, FshResources.Todos),
-        new("Export Todos", FshActions.Export, FshResources.Todos),
-
          new("View Hangfire", FshActions.View, FshResources.Hangfire),
          new("View Dashboard", FshActions.View, FshResources.Dashboard),
 

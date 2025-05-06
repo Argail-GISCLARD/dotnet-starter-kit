@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace FSH.Starter.WebApi.Catalog.Application.Recipes.Delete.v1;
 public sealed class DeleteRecipeHandler(
     ILogger<DeleteRecipeHandler> logger,
-    [FromKeyedServices("catalog:products")] IRepository<Recipe> repository)
+    [FromKeyedServices("catalog:recipes")] IRepository<Recipe> repository)
     : IRequestHandler<DeleteRecipeCommand>
 {
     public async Task Handle(DeleteRecipeCommand request, CancellationToken cancellationToken)

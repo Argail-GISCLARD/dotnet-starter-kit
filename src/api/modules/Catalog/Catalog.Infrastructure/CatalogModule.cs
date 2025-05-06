@@ -30,6 +30,20 @@ public static class CatalogModule
             brandGroup.MapGetBrandListEndpoint();
             brandGroup.MapBrandUpdateEndpoint();
             brandGroup.MapBrandDeleteEndpoint();
+
+            var recipeGroup = app.MapGroup("recipes").WithTags("recipes");
+            recipeGroup.MapRecipeCreationEndpoint();
+            recipeGroup.MapGetRecipeEndpoint();
+            recipeGroup.MapGetRecipeListEndpoint();
+            recipeGroup.MapRecipeUpdateEndpoint();
+            recipeGroup.MapRecipeDeleteEndpoint();
+
+            var jacXsonGroup = app.MapGroup("jacXsons").WithTags("jacXsons");
+            jacXsonGroup.MapJacXsonCreationEndpoint();
+            jacXsonGroup.MapGetJacXsonEndpoint();
+            jacXsonGroup.MapGetJacXsonListEndpoint();
+            jacXsonGroup.MapJacXsonUpdateEndpoint();
+            jacXsonGroup.MapJacXsonDeleteEndpoint();
         }
     }
     public static WebApplicationBuilder RegisterCatalogServices(this WebApplicationBuilder builder)
@@ -41,6 +55,10 @@ public static class CatalogModule
         builder.Services.AddKeyedScoped<IReadRepository<Product>, CatalogRepository<Product>>("catalog:products");
         builder.Services.AddKeyedScoped<IRepository<Brand>, CatalogRepository<Brand>>("catalog:brands");
         builder.Services.AddKeyedScoped<IReadRepository<Brand>, CatalogRepository<Brand>>("catalog:brands");
+        builder.Services.AddKeyedScoped<IRepository<Recipe>, CatalogRepository<Recipe>>("catalog:recipes");
+        builder.Services.AddKeyedScoped<IReadRepository<Recipe>, CatalogRepository<Recipe>>("catalog:recipes");
+        builder.Services.AddKeyedScoped<IRepository<JacXson>, CatalogRepository<JacXson>>("catalog:jacxsons");
+        builder.Services.AddKeyedScoped<IReadRepository<JacXson>, CatalogRepository<JacXson>>("catalog:jacxsons");
         return builder;
     }
     public static WebApplication UseCatalogModule(this WebApplication app)

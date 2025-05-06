@@ -6,6 +6,5 @@ public class CreateRecipeCommandValidator : AbstractValidator<CreateRecipeComman
     public CreateRecipeCommandValidator()
     {
         RuleFor(p => p.Name).NotEmpty().MinimumLength(2).MaximumLength(75);
-        RuleFor(p => p.Version).GreaterThanOrEqualTo(0);
     }
 }

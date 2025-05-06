@@ -11,6 +11,5 @@ public class SearchRecipeSpecs : EntitiesByPaginationFilterSpec<Recipe, RecipeRe
         : base(command) =>
         Query
             .OrderBy(c => c.Name, !command.HasOrderBy())
-            .Where(p => p.Version >= command.MinimumVersion!.Value, command.MinimumVersion.HasValue)
-            .Where(p => p.Version <= command.MaximumVersion!.Value, command.MaximumVersion.HasValue);
+            .Where(r => r.Name.Contains(command.Keyword), !string.IsNullOrEmpty(command.Keyword));
 }
