@@ -5,7 +5,7 @@ public class CreateRecipeVersionCommandValidator : AbstractValidator<CreateRecip
 {
     public CreateRecipeVersionCommandValidator()
     {
-        RuleFor(rv => rv.VersionNumber).NotEmpty().GreaterThanOrEqualTo(0);
+        RuleFor(rv => rv.VersionNumber).GreaterThanOrEqualTo(0);
         RuleFor(rv => rv.Description).MaximumLength(1000);
     }
 }

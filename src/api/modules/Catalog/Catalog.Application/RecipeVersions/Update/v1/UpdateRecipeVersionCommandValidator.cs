@@ -5,7 +5,7 @@ public class UpdateRecipeVersionCommandValidator : AbstractValidator<UpdateRecip
 {
     public UpdateRecipeVersionCommandValidator()
     {
-        RuleFor(b => b.VersionNumber).NotEmpty().GreaterThanOrEqualTo(0);
+        RuleFor(b => b.VersionNumber).GreaterThanOrEqualTo(0);
         RuleFor(b => b.Description).MaximumLength(1000);
     }
 }

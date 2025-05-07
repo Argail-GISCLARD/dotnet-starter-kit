@@ -11,5 +11,5 @@ public class SearchRecipeVersionSpecs : EntitiesByPaginationFilterSpec<RecipeVer
         : base(command) =>
         Query
             .OrderBy(c => c.VersionNumber, !command.HasOrderBy())
-            .Where(b => b.VersionNumber.Equals(command.VersionNumber));
+            .Where(b => b.VersionNumber == command.VersionNumber!.Value, command.VersionNumber.HasValue);
 }

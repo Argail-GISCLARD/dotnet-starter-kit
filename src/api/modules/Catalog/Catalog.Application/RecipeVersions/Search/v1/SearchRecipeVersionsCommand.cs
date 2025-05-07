@@ -6,5 +6,5 @@ namespace FSH.Starter.WebApi.Catalog.Application.RecipeVersions.Search.v1;
 
 public class SearchRecipeVersionsCommand : PaginationFilter, IRequest<PagedList<RecipeVersionResponse>>
 {
-    public int VersionNumber { get; set; }
+    public int? VersionNumber { get; set; }
 }
