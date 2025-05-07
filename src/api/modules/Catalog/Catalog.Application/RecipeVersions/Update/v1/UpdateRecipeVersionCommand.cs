@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+using FSH.Starter.WebApi.Catalog.Domain;
 using MediatR;
 
 namespace FSH.Starter.WebApi.Catalog.Application.RecipeVersions.Update.v1;
@@ -8,4 +10,5 @@ public sealed record UpdateRecipeVersionCommand(
     DateTime ReleasedOn,
     DateTime UpdatedOn,
     string? Description = null,
-    string? Publisher = null) : IRequest<UpdateRecipeVersionResponse>;
+    string? Publisher = null,
+    Collection<RecipeOperation>? RecipeOperations = null) : IRequest<UpdateRecipeVersionResponse>;

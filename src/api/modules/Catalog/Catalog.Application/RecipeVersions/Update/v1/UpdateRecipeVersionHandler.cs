@@ -16,7 +16,7 @@ public sealed class UpdateRecipeVersionHandler(
         ArgumentNullException.ThrowIfNull(request);
         var recipeVersion = await repository.GetByIdAsync(request.Id, cancellationToken);
         _ = recipeVersion ?? throw new RecipeVersionNotFoundException(request.Id);
-        var updatedRecipeVersion = recipeVersion.Update(request.VersionNumber, request.Description, request.IsMandatory, request.ReleasedOn, request.UpdatedOn, request.Publisher);
+        var updatedRecipeVersion = recipeVersion.Update(request.VersionNumber, request.Description, request.IsMandatory, request.ReleasedOn, request.UpdatedOn, request.Publisher, request.RecipeOperations);
         await repository.UpdateAsync(updatedRecipeVersion, cancellationToken);
         logger.LogInformation("recipeVersion with id : {RecipeVersionId} updated.", recipeVersion.Id);
         return new UpdateRecipeVersionResponse(recipeVersion.Id);

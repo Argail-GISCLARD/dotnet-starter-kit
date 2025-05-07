@@ -51,6 +51,13 @@ public static class CatalogModule
             recipeVersionGroup.MapGetRecipeVersionListEndpoint();
             recipeVersionGroup.MapRecipeVersionUpdateEndpoint();
             recipeVersionGroup.MapRecipeVersionDeleteEndpoint();
+
+            var operationGroup = app.MapGroup("operations").WithTags("operations");
+            operationGroup.MapOperationCreationEndpoint();
+            operationGroup.MapGetOperationEndpoint();
+            operationGroup.MapGetOperationListEndpoint();
+            operationGroup.MapOperationUpdateEndpoint();
+            operationGroup.MapOperationDeleteEndpoint();
         }
     }
     public static WebApplicationBuilder RegisterCatalogServices(this WebApplicationBuilder builder)
@@ -68,6 +75,8 @@ public static class CatalogModule
         builder.Services.AddKeyedScoped<IReadRepository<JacXson>, CatalogRepository<JacXson>>("catalog:jacxsons");
         builder.Services.AddKeyedScoped<IRepository<RecipeVersion>, CatalogRepository<RecipeVersion>>("catalog:recipeversions");
         builder.Services.AddKeyedScoped<IReadRepository<RecipeVersion>, CatalogRepository<RecipeVersion>>("catalog:recipeversions");
+        builder.Services.AddKeyedScoped<IRepository<Operation>, CatalogRepository<Operation>>("catalog:operations");
+        builder.Services.AddKeyedScoped<IReadRepository<Operation>, CatalogRepository<Operation>>("catalog:operations");
         return builder;
     }
     public static WebApplication UseCatalogModule(this WebApplication app)

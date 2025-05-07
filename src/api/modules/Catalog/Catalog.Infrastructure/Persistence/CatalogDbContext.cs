@@ -22,6 +22,7 @@ public sealed class CatalogDbContext : FshDbContext
     public DbSet<Recipe> Recipes { get; set; } = null!;
     public DbSet<JacXson> JacXsons { get; set; } = null!;
     public DbSet<RecipeVersion> RecipeVersions { get; set; } = null!;
+    public DbSet<Operation> Operations { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

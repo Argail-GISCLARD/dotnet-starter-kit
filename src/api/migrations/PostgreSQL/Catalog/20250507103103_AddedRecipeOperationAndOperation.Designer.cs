@@ -3,6 +3,7 @@ using System;
 using FSH.Starter.WebApi.Catalog.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FSH.Starter.WebApi.Migrations.PostgreSQL.Catalog
 {
     [DbContext(typeof(CatalogDbContext))]
-    partial class CatalogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250507103103_AddedRecipeOperationAndOperation")]
+    partial class AddedRecipeOperationAndOperation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,9 +290,6 @@ namespace FSH.Starter.WebApi.Migrations.PostgreSQL.Catalog
                     b.Property<Guid?>("RecipeId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("RecipeVersionId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("TenantId")
                         .IsRequired()
                         .HasMaxLength(64)
@@ -300,8 +300,6 @@ namespace FSH.Starter.WebApi.Migrations.PostgreSQL.Catalog
                     b.HasIndex("OperationId");
 
                     b.HasIndex("RecipeId");
-
-                    b.HasIndex("RecipeVersionId");
 
                     b.ToTable("RecipeOperations", "catalog");
 
@@ -381,10 +379,6 @@ namespace FSH.Starter.WebApi.Migrations.PostgreSQL.Catalog
                         .WithMany("RecipeOperations")
                         .HasForeignKey("RecipeId");
 
-                    b.HasOne("FSH.Starter.WebApi.Catalog.Domain.RecipeVersion", null)
-                        .WithMany("RecipeOperations")
-                        .HasForeignKey("RecipeVersionId");
-
                     b.Navigation("Operation");
 
                     b.Navigation("Recipe");
@@ -396,11 +390,6 @@ namespace FSH.Starter.WebApi.Migrations.PostgreSQL.Catalog
                 });
 
             modelBuilder.Entity("FSH.Starter.WebApi.Catalog.Domain.Recipe", b =>
-                {
-                    b.Navigation("RecipeOperations");
-                });
-
-            modelBuilder.Entity("FSH.Starter.WebApi.Catalog.Domain.RecipeVersion", b =>
                 {
                     b.Navigation("RecipeOperations");
                 });

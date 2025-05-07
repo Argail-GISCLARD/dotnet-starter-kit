@@ -1,4 +1,5 @@
-﻿using FSH.Framework.Core.Domain;
+﻿using System.Collections.ObjectModel;
+using FSH.Framework.Core.Domain;
 using FSH.Framework.Core.Domain.Contracts;
 using FSH.Starter.WebApi.Catalog.Domain.Events;
 
@@ -11,6 +12,7 @@ public class JacXson : AuditableEntity, IAggregateRoot
     public string W0 { get; private set; } = string.Empty;
     public string L { get; private set; } = string.Empty;
     public string Salt { get; private set; } = string.Empty;
+    public virtual ICollection<Post> Posts { get; private set; } = new Collection<Post>();
 
     private JacXson() { }
 

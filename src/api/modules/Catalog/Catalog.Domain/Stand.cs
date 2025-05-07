@@ -4,25 +4,25 @@ using FSH.Framework.Core.Domain.Contracts;
 using FSH.Starter.WebApi.Catalog.Domain.Events;
 
 namespace FSH.Starter.WebApi.Catalog.Domain;
-public class Recipe : AuditableEntity, IAggregateRoot
+public class Stand : AuditableEntity, IAggregateRoot
 {
-    public string? Name { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
-    private Recipe() { }
+    private Stand() { }
 
-    private Recipe(Guid id, string? name)
+    private Stand(Guid id, string name)
     {
         Id = id;
         Name = name;
-        QueueDomainEvent(new RecipeCreated { Recipe = this });
+        QueueDomainEvent(new StandCreated { Stand = this });
     }
 
-    public static Recipe Create(string? name)
+    public static Stand Create(string name)
     {
-        return new Recipe(Guid.NewGuid(), name);
+        return new Stand(Guid.NewGuid(), name);
     }
 
-    public Recipe Update(string? name)
+    public Stand Update(string? name)
     {
         bool isUpdated = false;
 
@@ -34,7 +34,7 @@ public class Recipe : AuditableEntity, IAggregateRoot
 
         if (isUpdated)
         {
-            QueueDomainEvent(new RecipeUpdated { Recipe = this });
+            QueueDomainEvent(new StandUpdated { Stand = this });
         }
 
         return this;

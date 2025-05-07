@@ -68,6 +68,14 @@ public static class FshPermissions
         new("Delete RecipeVersions", FshActions.Delete, FshResources.RecipeVersions),
         new("Export RecipeVersions", FshActions.Export, FshResources.RecipeVersions),
 
+        //operations
+        new("View Operations", FshActions.View, FshResources.Operations, IsBasic: true),
+        new("Search Operations", FshActions.Search, FshResources.Operations, IsBasic: true),
+        new("Create Operations", FshActions.Create, FshResources.Operations),
+        new("Update Operations", FshActions.Update, FshResources.Operations),
+        new("Delete Operations", FshActions.Delete, FshResources.Operations),
+        new("Export Operations", FshActions.Export, FshResources.Operations),
+
          new("View Hangfire", FshActions.View, FshResources.Hangfire),
          new("View Dashboard", FshActions.View, FshResources.Dashboard),
 
