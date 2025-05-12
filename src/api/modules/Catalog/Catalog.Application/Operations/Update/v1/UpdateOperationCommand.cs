@@ -6,4 +6,4 @@ namespace FSH.Starter.WebApi.Catalog.Application.Operations.Update.v1;
 public sealed record UpdateOperationCommand(
     Guid Id,
     string? Name,
-    Collection<RecipeOperation>? RecipeOperations) : IRequest<UpdateOperationResponse>;
+    Collection<RecipeVersion>? RecipeVersions) : IRequest<UpdateOperationResponse>;

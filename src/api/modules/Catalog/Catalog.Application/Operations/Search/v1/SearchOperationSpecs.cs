@@ -10,6 +10,6 @@ public class SearchOperationSpecs : EntitiesByPaginationFilterSpec<Operation, Op
     public SearchOperationSpecs(SearchOperationsCommand command)
         : base(command) =>
         Query
-            .Include(o => o.RecipeOperations)
+            .Include(o => o.RecipeVersions)
             .OrderBy(c => c.Name, !command.HasOrderBy());
 }

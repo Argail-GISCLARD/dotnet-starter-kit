@@ -16,7 +16,7 @@ public sealed class UpdateOperationHandler(
         ArgumentNullException.ThrowIfNull(request);
         var operation = await repository.GetByIdAsync(request.Id, cancellationToken);
         _ = operation ?? throw new OperationNotFoundException(request.Id);
-        var updatedOperation = operation.Update(request.Name, request.RecipeOperations);
+        var updatedOperation = operation.Update(request.Name, request.RecipeVersions);
         await repository.UpdateAsync(updatedOperation, cancellationToken);
         logger.LogInformation("operation with id : {OperationId} updated.", operation.Id);
         return new UpdateOperationResponse(operation.Id);

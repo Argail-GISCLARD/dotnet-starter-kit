@@ -13,7 +13,20 @@ public sealed class CreateRecipeVersionHandler(
     public async Task<CreateRecipeVersionResponse> Handle(CreateRecipeVersionCommand request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
-        var recipeVersion = RecipeVersion.Create(request.VersionNumber, request.Description, request.IsMandatory, request.ReleasedOn, request.UpdatedOn, request.Publisher); 
+        var recipeVersion = RecipeVersion.Create(
+            request.VersionNumber, 
+            request.Description, 
+            request.IsMandatory, 
+            request.IsPaid, 
+            request.ReleasedOn, 
+            request.UpdatedOn, 
+            request.Publisher, 
+            request.RecipeId, 
+            request.JacXsonTypeId, 
+            request.RecipeStatusId, 
+            request.RecipeContentId, 
+            request.RecipeChangelogId);
+        
         await repository.AddAsync(recipeVersion, cancellationToken);
         logger.LogInformation("recipeVersion created {RecipeVersionId}", recipeVersion.Id);
         return new CreateRecipeVersionResponse(recipeVersion.Id);

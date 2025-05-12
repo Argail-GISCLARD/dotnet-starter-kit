@@ -17,20 +17,6 @@ public static class CatalogModule
         public Endpoints() : base("catalog") { }
         public override void AddRoutes(IEndpointRouteBuilder app)
         {
-            var productGroup = app.MapGroup("products").WithTags("products");
-            productGroup.MapProductCreationEndpoint();
-            productGroup.MapGetProductEndpoint();
-            productGroup.MapGetProductListEndpoint();
-            productGroup.MapProductUpdateEndpoint();
-            productGroup.MapProductDeleteEndpoint();
-
-            var brandGroup = app.MapGroup("brands").WithTags("brands");
-            brandGroup.MapBrandCreationEndpoint();
-            brandGroup.MapGetBrandEndpoint();
-            brandGroup.MapGetBrandListEndpoint();
-            brandGroup.MapBrandUpdateEndpoint();
-            brandGroup.MapBrandDeleteEndpoint();
-
             var recipeGroup = app.MapGroup("recipes").WithTags("recipes");
             recipeGroup.MapRecipeCreationEndpoint();
             recipeGroup.MapGetRecipeEndpoint();
@@ -65,10 +51,6 @@ public static class CatalogModule
         ArgumentNullException.ThrowIfNull(builder);
         builder.Services.BindDbContext<CatalogDbContext>();
         builder.Services.AddScoped<IDbInitializer, CatalogDbInitializer>();
-        builder.Services.AddKeyedScoped<IRepository<Product>, CatalogRepository<Product>>("catalog:products");
-        builder.Services.AddKeyedScoped<IReadRepository<Product>, CatalogRepository<Product>>("catalog:products");
-        builder.Services.AddKeyedScoped<IRepository<Brand>, CatalogRepository<Brand>>("catalog:brands");
-        builder.Services.AddKeyedScoped<IReadRepository<Brand>, CatalogRepository<Brand>>("catalog:brands");
         builder.Services.AddKeyedScoped<IRepository<Recipe>, CatalogRepository<Recipe>>("catalog:recipes");
         builder.Services.AddKeyedScoped<IReadRepository<Recipe>, CatalogRepository<Recipe>>("catalog:recipes");
         builder.Services.AddKeyedScoped<IRepository<JacXson>, CatalogRepository<JacXson>>("catalog:jacxsons");

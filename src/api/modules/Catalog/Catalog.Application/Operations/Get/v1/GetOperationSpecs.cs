@@ -9,6 +9,6 @@ public class GetOperationSpecs : Specification<Operation, OperationResponse>
     {
         Query
             .Where(p => p.Id == id)
-            .Include(p => p.RecipeOperations);
+            .Include(p => p.RecipeVersions);
     }
 }

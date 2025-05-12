@@ -16,13 +16,24 @@ public sealed class CatalogDbContext : FshDbContext
         : base(multiTenantContextAccessor, options, publisher, settings)
     {
     }
-
-    public DbSet<Product> Products { get; set; } = null!;
-    public DbSet<Brand> Brands { get; set; } = null!;
     public DbSet<Recipe> Recipes { get; set; } = null!;
     public DbSet<JacXson> JacXsons { get; set; } = null!;
     public DbSet<RecipeVersion> RecipeVersions { get; set; } = null!;
     public DbSet<Operation> Operations { get; set; } = null!;
+    public DbSet<JacXsonEvent> JacXsonEvent { get; set; } = null!;
+    public DbSet<JacXsonRecipeVersion> JacXsonRecipeVersions { get; set; } = null!;
+    public DbSet<JacXsonType> JacXsonTypes { get; set; } = null!;
+    public DbSet<PlaneEngine> PlaneEngines  { get; set; } = null!;
+    public DbSet<PlaneModel> PlaneModels { get; set; } = null!;
+    public DbSet<PlaneEngineConfiguration> PlaneEngineConfigurations { get; set; } = null!;
+    public DbSet<PlaneManufacturer> PlaneManufacturers { get; set; } = null!;
+    public DbSet<RecipeChangelog> RecipeChangelogs { get; set; } = null!;
+    public DbSet<RecipeContent> RecipeContents { get; set; } = null!;
+    public DbSet<RecipeStatus> RecipeStatuses { get; set; } = null!;
+    public DbSet<RecipeTemplate> RecipeTemplates { get; set; } = null!;
+    public DbSet<RecipeTemplateContent> RecipeTemplateContents { get; set; } = null!;
+    public DbSet<Stand> Stands { get; set; } = null!;
+    public DbSet<Skill> Skills { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

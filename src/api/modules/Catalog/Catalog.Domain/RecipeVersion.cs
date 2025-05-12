@@ -7,7 +7,8 @@ namespace FSH.Starter.WebApi.Catalog.Domain;
 public class RecipeVersion : AuditableEntity, IAggregateRoot
 {
     public int VersionNumber { get; private set; } = 1;
-    public bool IsMandatory { get; private set; } = false;
+    public bool IsMandatory { get; private set; }
+    public bool IsPaid { get; private set; }
     public string? Description { get; private set; }
     public DateTime RealeasedOn { get; private set; } = DateTime.UtcNow;
     public DateTime UpdatedOn { get; private set; } = DateTime.UtcNow;
@@ -28,11 +29,12 @@ public class RecipeVersion : AuditableEntity, IAggregateRoot
 
     private RecipeVersion() { }
 
-    private RecipeVersion(Guid id, int versionNumber, string? description, bool isMandatory, DateTime releasedOn, DateTime updatedOn, string? publisher, Guid? recipeId, Guid? jacXsonTypeId, Guid? recipeStatusId, Guid? recipeContentId, Guid? recipeChangelogId )
+    private RecipeVersion(Guid id, int versionNumber, string? description, bool isMandatory, bool isPaid, DateTime releasedOn, DateTime updatedOn, string? publisher, Guid? recipeId, Guid? jacXsonTypeId, Guid? recipeStatusId, Guid? recipeContentId, Guid? recipeChangelogId )
     {
         Id = id;
         VersionNumber = versionNumber;
         IsMandatory = isMandatory;
+        IsPaid = isPaid;
         Description = description;
         RealeasedOn = releasedOn;
         UpdatedOn = updatedOn;
@@ -45,12 +47,12 @@ public class RecipeVersion : AuditableEntity, IAggregateRoot
         QueueDomainEvent(new RecipeVersionCreated { RecipeVersion = this });
     }
 
-    public static RecipeVersion Create(int versionNumber, string? description, bool isMandatory, DateTime releasedOn, DateTime updatedOn, string? publisher, Guid? recipeId, Guid? jacXsonTypeId, Guid? recipeStatusId, Guid? recipeContentId, Guid? recipeChangelogId)
+    public static RecipeVersion Create(int versionNumber, string? description, bool isMandatory, bool isPaid, DateTime releasedOn, DateTime updatedOn, string? publisher, Guid? recipeId, Guid? jacXsonTypeId, Guid? recipeStatusId, Guid? recipeContentId, Guid? recipeChangelogId)
     {
-        return new RecipeVersion(Guid.NewGuid(), versionNumber, description, isMandatory, releasedOn, updatedOn, publisher, recipeId, jacXsonTypeId, recipeStatusId, recipeContentId, recipeChangelogId);
+        return new RecipeVersion(Guid.NewGuid(), versionNumber, description, isMandatory, isPaid, releasedOn, updatedOn, publisher, recipeId, jacXsonTypeId, recipeStatusId, recipeContentId, recipeChangelogId);
     }
 
-    public RecipeVersion Update(int? versionNumber, string? description, bool? isMandatory, DateTime? releasedOn, DateTime? updatedOn, string? publisher, Collection<Operation>? operations,
+    public RecipeVersion Update(int? versionNumber, string? description, bool? isMandatory, bool? isPaid, DateTime? releasedOn, DateTime? updatedOn, string? publisher, Collection<Operation>? operations,
         Guid? recipeId, Guid? jacXsonTypeId, Guid? recipeStatusId, Guid? recipeContentId, Guid? recipeChangelogId, Collection<JacXsonRecipeVersion>? jacXsonRecipeVersions, Collection<Skill>? skills)
     {
         bool isUpdated = false;
@@ -64,6 +66,12 @@ public class RecipeVersion : AuditableEntity, IAggregateRoot
         if (isMandatory.HasValue && isMandatory.Value != IsMandatory)
         {
             IsMandatory = isMandatory.Value;
+            isUpdated = true;
+        }
+
+        if (isPaid.HasValue && isPaid.Value != IsMandatory)
+        {
+            IsPaid = isPaid.Value;
             isUpdated = true;
         }
 

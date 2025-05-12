@@ -34,7 +34,7 @@ public class JacXsonType : AuditableEntity, IAggregateRoot
 
         if (isUpdated)
         {
-            QueueDomainEvent(new JacXsonType { JacXsonType = this });
+            QueueDomainEvent(new JacXsonTypeUpdated { JacXsonType = this });
         }
 
         return this;

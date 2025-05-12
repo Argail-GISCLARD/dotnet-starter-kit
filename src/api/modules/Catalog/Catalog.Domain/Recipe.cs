@@ -1,23 +1,24 @@
-﻿using System.Collections.ObjectModel;
-using FSH.Framework.Core.Domain;
+﻿using FSH.Framework.Core.Domain;
 using FSH.Framework.Core.Domain.Contracts;
 using FSH.Starter.WebApi.Catalog.Domain.Events;
 
 namespace FSH.Starter.WebApi.Catalog.Domain;
 public class Recipe : AuditableEntity, IAggregateRoot
 {
-    public string? Name { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+
+    public virtual RecipeVersion RecipeVersion { get; private set; } = default!;
 
     private Recipe() { }
 
-    private Recipe(Guid id, string? name)
+    private Recipe(Guid id, string name)
     {
         Id = id;
         Name = name;
         QueueDomainEvent(new RecipeCreated { Recipe = this });
     }
 
-    public static Recipe Create(string? name)
+    public static Recipe Create(string name)
     {
         return new Recipe(Guid.NewGuid(), name);
     }

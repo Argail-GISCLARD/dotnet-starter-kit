@@ -28,22 +28,6 @@ public static class FshPermissions
         new("View RoleClaims", FshActions.View, FshResources.RoleClaims),
         new("Update RoleClaims", FshActions.Update, FshResources.RoleClaims),
         
-        //products
-        new("View Products", FshActions.View, FshResources.Products, IsBasic: true),
-        new("Search Products", FshActions.Search, FshResources.Products, IsBasic: true),
-        new("Create Products", FshActions.Create, FshResources.Products),
-        new("Update Products", FshActions.Update, FshResources.Products),
-        new("Delete Products", FshActions.Delete, FshResources.Products),
-        new("Export Products", FshActions.Export, FshResources.Products),
-
-        //brands
-        new("View Brands", FshActions.View, FshResources.Brands, IsBasic: true),
-        new("Search Brands", FshActions.Search, FshResources.Brands, IsBasic: true),
-        new("Create Brands", FshActions.Create, FshResources.Brands),
-        new("Update Brands", FshActions.Update, FshResources.Brands),
-        new("Delete Brands", FshActions.Delete, FshResources.Brands),
-        new("Export Brands", FshActions.Export, FshResources.Brands),
-
         //jacxsons
         new("View JacXson", FshActions.View, FshResources.JacXsons, IsBasic: true),
         new("Search JacXson", FshActions.Search, FshResources.JacXsons, IsBasic: true),
